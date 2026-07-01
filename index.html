@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brijesh Kumar</title>
+<meta name="description" content="Brijesh Kumar — Ph.D. researcher at IIIT Allahabad working on machine learning for cybersecurity, few-shot ransomware detection, and large language models." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #2a2a2a;
+    --muted: #7a7a7a;
+    --line: #e6e6e6;
+    --link: #2a2a2a;
+    --link-hover: #000000;
+    --accent: #8a4a1a;              /* subtle warm brown for citation superscripts */
+    --sidebar-w: 260px;
+    --max-w: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  /* ------------------- TOP NAV ------------------- */
+  .nav-wrap {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+  nav .brand {
+    font-weight: 600;
+    color: var(--fg);
+    margin-right: 30px;
+  }
+  nav a {
+    color: var(--muted);
+    font-weight: 400;
+    padding: 4px 0;
+  }
+  nav a:hover, nav a.active {
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  /* ------------------- LAYOUT ------------------- */
+  .layout {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* ------------------- SIDEBAR ------------------- */
+  aside {
+    position: sticky;
+    top: 90px;
+  }
+
+  .photo {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    margin: 0 auto 22px;
+    background: linear-gradient(135deg, #eae4dc 0%, #c8bda9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo .placeholder {
+    font-size: 58px;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .side-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0 0 6px;
+    padding-left: 6px;
+  }
+  .side-role {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 22px;
+    line-height: 1.5;
+    padding-left: 6px;
+  }
+
+  .side-links {
+    list-style: none;
+    padding: 0 0 0 6px;
+    margin: 0;
+  }
+  .side-links li {
+    font-size: 13.5px;
+    padding: 5px 0;
+    color: var(--fg);
+  }
+  .side-links li i {
+    width: 18px;
+    color: var(--muted);
+    font-size: 13px;
+    margin-right: 6px;
+    text-align: center;
+  }
+  .side-links a { color: var(--fg); }
+  .side-links a:hover { color: #000; }
+
+  /* ------------------- MAIN ------------------- */
+  main section { margin-bottom: 34px; }
+  main h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fg);
+    margin: 0 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  main p { margin: 0 0 12px; font-size: 14px; }
+
+  /* About paragraphs */
+  #about p { line-height: 1.8; }
+
+  /* Research interests bullets + superscripts */
+  ul.clean {
+    padding-left: 20px;
+    margin: 8px 0 12px;
+  }
+  ul.clean li { margin-bottom: 8px; font-size: 14px; }
+  sup.cite {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 11px;
+    margin-left: 1px;
+  }
+
+  /* News timeline */
+  .news-list { list-style: none; padding: 0; margin: 0; }
+  .news-list li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
+  }
+  .news-list li:last-child { border-bottom: none; }
+  .news-date {
+    color: var(--muted);
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+
+  /* Publications */
+  .pub {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .pub:last-child { border-bottom: none; }
+  .pub-num {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .pub-title {
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0 0 3px;
+    font-size: 14px;
+  }
+  .pub-authors { font-size: 13.5px; color: var(--fg); margin: 0 0 3px; }
+  .pub-authors .self { font-weight: 600; }
+  .pub-venue {
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+  .pub-tags { font-size: 12px; margin-top: 4px; }
+  .tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--muted);
+    margin-right: 5px;
+    font-size: 11.5px;
+  }
+  .tag.accepted { color: #7a4a1a; border-color: #c9a37b; }
+
+  /* Teaching / Service — date-content grid */
+  .teach {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
+  }
+  .teach:last-child { border-bottom: none; }
+  .teach-when {
+    color: var(--muted);
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .teach-role { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+  /* Contact box */
+  .contact-note {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+
+  /* Footer */
+  footer {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 24px 40px 36px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12.5px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ------------------- RESPONSIVE ------------------- */
+  @media (max-width: 780px) {
+    nav { padding: 16px 22px; gap: 16px; }
+    nav .brand { margin-right: 8px; }
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 32px 22px 40px;
+    }
+    aside { position: static; text-align: center; }
+    .side-name, .side-role, .side-links { text-align: center; padding-left: 0; }
+    .photo { width: 160px; height: 160px; }
+    .news-list li, .teach { grid-template-columns: 1fr; gap: 4px; }
+    .pub { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- =================== TOP NAV =================== -->
+<div class="nav-wrap">
+  <nav>
+    <span class="brand">Brijesh Kumar</span>
+    <a href="#about" class="active">About</a>
+    <a href="#research">Research</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+    <a href="#" title="Add link to your CV PDF">CV</a>
+  </nav>
+</div>
+
+<!-- =================== LAYOUT =================== -->
+<div class="layout">
+
+  <!-- ---------- SIDEBAR ---------- -->
+  <aside>
+    <div class="photo" aria-label="Portrait placeholder">
+      <!-- Replace the placeholder span with: <img src="assets/brijesh.jpg" alt="Brijesh Kumar" /> -->
+      <span class="placeholder">BK</span>
+    </div>
+
+    <p class="side-name">Brijesh Kumar</p>
+    <p class="side-role">Ph.D. Researcher at Indian Institute of Information Technology, Allahabad</p>
+
+    <ul class="side-links">
+      <li><i class="fa-solid fa-location-dot"></i>Prayagraj, India</li>
+      <li><i class="fa-solid fa-envelope"></i><a href="mailto:brijeshpal8878@gmail.com">Email</a></li>
+      <li><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/brijeshkumar8878" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><i class="fa-brands fa-github"></i><a href="https://github.com/" target="_blank" rel="noopener">Github</a></li>
+      <li><i class="fa-solid fa-graduation-cap"></i><a href="#" target="_blank" rel="noopener">Google Scholar</a></li>
+      <li><i class="fa-brands fa-orcid"></i><a href="#" target="_blank" rel="noopener">ORCID</a></li>
+    </ul>
+  </aside>
+
+  <!-- ---------- MAIN ---------- -->
+  <main>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I am a Ph.D. researcher in the
+        <a href="https://www.iiita.ac.in/">Department of Information Technology</a>
+        at the Indian Institute of Information Technology, Allahabad, advised by
+        <a href="#">Prof. S. Venkatesan</a> and <a href="#">Prof. Krishna Pratap Singh</a>.
+      </p>
+      <p>
+        My research sits at the intersection of <strong>machine learning</strong> and
+        <strong>cybersecurity</strong>. I work on
+        <a href="#research">few-shot and meta-learning</a> methods for detecting
+        <em>zero-day and evolving ransomware</em>, and on using deep learning and
+        large language models to reason about malicious program behaviour.
+      </p>
+      <p>
+        Previously, I received an M.Sc. in Computational Science and Applications from
+        <a href="#">Banaras Hindu University</a>, where I worked on climate modelling for
+        temperature and rainfall prediction, and a B.Sc. (Hons.) in Computer Science from
+        <a href="#">Ramanujan College, University of Delhi</a>.
+      </p>
+      <p>
+        I hold a <strong>Junior Research Fellowship (JRF)</strong> and have qualified the
+        <strong>UGC-NET</strong> in Computer Science &amp; Applications.
+      </p>
+    </section>
+
+    <!-- ===== RESEARCH ===== -->
+    <section id="research">
+      <h2>Research Interests</h2>
+      <p>
+        My research on <em>trustworthy AI for cybersecurity</em> sits at the intersection
+        of <em>few-shot learning</em>, <em>deep representation learning</em>, and
+        <em>malware analysis</em>, and asks questions like:
+      </p>
+      <ul class="clean">
+        <li>How can we detect <strong>previously unseen ransomware families</strong> when only a handful of samples are available<sup class="cite">1</sup>?</li>
+        <li>Can <strong>variational meta-learning</strong> and prototypical methods produce embeddings that generalise across malware behaviours<sup class="cite">1</sup>?</li>
+        <li>How do we build deep learning models that are <strong>fair and unbiased</strong> across sensitive attributes and deployment settings<sup class="cite">2</sup>?</li>
+        <li>Can <strong>large language models</strong> reason about API-call sequences, binaries, and program behaviour well enough to help defenders?</li>
+        <li>How should few-shot detectors adapt to <strong>zero-day threats</strong> and concept drift in the wild?</li>
+      </ul>
+      <p>
+        To answer these questions, I work with variational meta-learning, prototypical
+        networks, gradient-boosted models, and modern deep-learning frameworks on
+        malware and benchmark datasets.
+      </p>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li>
+          <span class="news-date">Jan 2026</span>
+          <span>Started as Teaching Assistant for <em>Design and Analysis of Algorithms</em> at IIIT Allahabad.</span>
+        </li>
+        <li>
+          <span class="news-date">2026</span>
+          <span>Our paper <em>Meta-VAE: Few-Shot Ransomware Detection via Variational Meta-Learning</em> was <strong>accepted at IEEE TENCON 2026</strong>.</span>
+        </li>
+        <li>
+          <span class="news-date">2026</span>
+          <span>Serving as reviewer for the IEEE International Conference on Adaptive Intelligence, Modeling and Simulation (AIMS), Malaysia.</span>
+        </li>
+        <li>
+          <span class="news-date">2025</span>
+          <span>Co-authored paper on <em>Fairness and Bias of Deep Learning Models</em> presented at IEEE CVMI 2025, Rourkela.</span>
+        </li>
+        <li>
+          <span class="news-date">2025</span>
+          <span>Led organisation of the <em>Workshop on Quantum Communication &amp; Information Security</em> with IIIT Hyderabad, C-DAC Bangalore, and SETS Chennai.</span>
+        </li>
+        <li>
+          <span class="news-date">Jan 2025</span>
+          <span>Joined IIIT Allahabad as a <strong>Junior Research Fellow</strong> to begin my Ph.D. in AI/ML for cybersecurity.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="pub">
+        <div class="pub-num">1.</div>
+        <div>
+          <p class="pub-title">Meta-VAE: Few-Shot Ransomware Detection via Variational Meta-Learning</p>
+          <p class="pub-authors"><span class="self">Brijesh Kumar</span> et al.</p>
+          <p class="pub-venue">IEEE Region 10 Conference (TENCON), 2026</p>
+          <p class="pub-tags">
+            <span class="tag accepted">Accepted</span>
+            <span class="tag">Few-shot learning</span>
+            <span class="tag">Ransomware</span>
+            <span class="tag">Meta-learning</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-num">2.</div>
+        <div>
+          <p class="pub-title">A Study of Fairness and Bias of Deep Learning Models</p>
+          <p class="pub-authors">K. Lohani, <span class="self">Brijesh Kumar</span> et al.</p>
+          <p class="pub-venue">IEEE Int. Conf. on Computer Vision and Machine Intelligence (CVMI), Rourkela, 2025, pp. 1–7</p>
+          <p class="pub-tags">
+            <span class="tag">Fairness</span>
+            <span class="tag">Deep learning</span>
+            <a class="tag" href="https://doi.org/10.1109/CVMI66673.2025.11337368" target="_blank" rel="noopener">DOI ↗</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TEACHING ===== -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <p style="color: var(--muted); font-size: 13px; margin-bottom: 12px;">
+        Teaching Assistant at IIIT Allahabad — tutorials, laboratory sessions, and evaluation.
+      </p>
+
+      <div class="teach">
+        <span class="teach-when">Jan 2026 –</span>
+        <div>
+          <div>Design and Analysis of Algorithms</div>
+          <div class="teach-role">Teaching Assistant · IIIT Allahabad</div>
+        </div>
+      </div>
+      <div class="teach">
+        <span class="teach-when">Jul – Dec 2025</span>
+        <div>
+          <div>Introduction to Machine Learning</div>
+          <div class="teach-role">Teaching Assistant · IIIT Allahabad</div>
+        </div>
+      </div>
+      <div class="teach">
+        <span class="teach-when">Jan – Jun 2025</span>
+        <div>
+          <div>Advanced Programming Practices</div>
+          <div class="teach-role">Teaching Assistant · IIIT Allahabad</div>
+        </div>
+      </div>
+      <div class="teach">
+        <span class="teach-when">2025</span>
+        <div>
+          <div>AI to Generative AI — 6-month Faculty Development Programme</div>
+          <div class="teach-role">Teaching Assistant · AICTE-sponsored FDP for non-CS faculty</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICE ===== -->
+    <section id="service">
+      <h2>Service &amp; Workshops</h2>
+
+      <div class="teach">
+        <span class="teach-when">2026</span>
+        <div>
+          <div>Reviewer, IEEE Int. Conf. on Adaptive Intelligence, Modeling and Simulation (AIMS), Malaysia</div>
+        </div>
+      </div>
+      <div class="teach">
+        <span class="teach-when">2025</span>
+        <div>
+          <div>Overall Lead — Workshop on Quantum Communication &amp; Information Security</div>
+          <div class="teach-role">NSC Lab, IIIT Allahabad · in collaboration with Cyber Manthan Centre (IIIT Hyderabad), C-DAC Bangalore, and SETS Chennai</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AWARDS ===== -->
+    <section id="awards">
+      <h2>Awards &amp; Fellowships</h2>
+      <ul class="clean">
+        <li>Junior Research Fellowship (JRF), IIIT Allahabad, 2025.</li>
+        <li>UGC-NET Qualified in Computer Science and Applications, June 2024 — Score: 194/300.</li>
+        <li>Rank 3, Akhil Bharti Vigyan Mela (national-level science exhibition), Vidya Bharti, Varanasi, 2017.</li>
+      </ul>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        The fastest way to reach me is by email at
+        <a href="mailto:brijeshpal8878@gmail.com">brijeshpal8878@gmail.com</a>.
+        I am always happy to discuss research on ML for security, few-shot learning,
+        or potential collaborations.
+      </p>
+      <p class="contact-note">
+        Department of Information Technology · Indian Institute of Information Technology,
+        Allahabad · Prayagraj, Uttar Pradesh 211015, India.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  © 2026 Brijesh Kumar &nbsp;·&nbsp; Prayagraj, India
+</footer>
+
+</body>
+</html>
